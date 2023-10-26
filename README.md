@@ -154,3 +154,6 @@ spring:
 ## 2.4 Criando tabelas no Banco de Dados com jpa.hibernate.ddl-auto
 
 ## 2.5 Migrations com Flyway
+
+## 2.6 Intefaces da Camada Repository
+
