@@ -151,3 +151,6 @@ spring:
 
 ## 2.3 Anotando as Classes de Modelo com as Anotações JPA (jakarta.persistence)
 
+## 2.4 Criando tabelas no Banco de Dados com jpa.hibernate.ddl-auto
+
+## 2.5 Migrations com Flyway
