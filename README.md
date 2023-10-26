@@ -1,114 +1,88 @@
-# 1. Setup e Pré-requisitos
-## 1.1 Visão Geral
-### 1.1.1 Objetivo Geral
-Conheça o Spring Boot, projeto que facilita a implementação de repósitorios baseados em banco de dados relacionais. Nesse contexto, explore a linguagem de programação  Kotlin e entenda como o Projeto Spring Data JPA facilita a criação de aplicativos baseados em Spring que usam tecnologias de acesso a dados
+<h1 align="center">Api Rest com Kotlin e Persistencia de Dados - DIO</h1>
+<h4 align="center">Sistema de Analise de Solicitação de Crédito</h4>
+<p align="center">
+     <a alt="Java">
+        <img src="https://img.shields.io/badge/Java-v17-blue.svg" />
+    </a>
+    <a alt="Kotlin">
+        <img src="https://img.shields.io/badge/Kotlin-v1.7.22-purple.svg" />
+    </a>
+    <a alt="Spring Boot">
+        <img src="https://img.shields.io/badge/Spring%20Boot-v3.0.7-green" />
+    </a>
+    <a alt="Gradle">
+        <img src="https://img.shields.io/badge/Gradle-v8.1.1-yellowgreen" />
+    </a>
+    <a alt="H2 ">
+        <img src="https://img.shields.io/badge/H2-v2.1.214-darkblue.svg" />
+    </a>
+    <a alt="Flyway">
+        <img src="https://img.shields.io/badge/Flyway-v9.19.1-orange">
+    </a>
+    <a alt = Swagger >
+        <img src="https://img.shields.io/badge/Swagger-v2.0.2-blueviolet">
+    </a>
+</p>
 
-### 1.1.2 Pré-requisitos
-- IDE para desenvolvimento Kotlin(IntelliJ Community)
-- JDK 17+
-- Kotlin 1.7.22
-- Postman
-- Sintaxe Kotlin e POO
-- Entendimento sobre Arquitetura REST
-- Utilização do Spring Boot 3.0.3
-- Noções sobre BDR (Banco de Daods Relacionais)
+## 📋Descrição
 
-## 1.2 Contextualizando JDBC, JPA, ORM e Hibernate
-### 1.2.1 JDBC
-- JDBC significa Java EE Database Conecctivity
-- JDBC é uma API de nível de chamada, o que significa que as instruções de SQL são transmitidas como sequências para a API que, então, se encarrega de executá-las no RDMS
-- SQL é uma linguagem declarativa de sintaxe relativamente simples, voltada ao banco  de dados relacionais.
-- Um banco de dados é uma coleção organizada normalmente armaazenadas eletronicamenente em um sistema de computador
-- Conexão com Banco de Dados MYSQL com JDBC
+O Credit Application System é uma API REST desenvolvida em Spring Boot e Kotlin para uma empresa de empréstimo realizar análise de solicitações de crédito. Essa API fornece funcionalidades para cadastrar clientes, gerenciar perfis, cadastrar e visualizar solicitações de empréstimo.
 
-### 1.2.2 JPA
-- O JPA(Java Persistence API) define uma maneira para mapear Plain Old Java Objects, POJOs, para um banco de dados. Estes POJOs são chamados  de entidades (Entities)
-- JPA, portanto, é um framework utilizado na camada de persitência para o desenvolvedor ter uma maior produtividade no contexto Java
+Este projeto foi desenvolvido como parte de um desafio proposto pela escola DIO (Digital Innovation One).
 
-### 1.2.3 ORM e Hibernate
-- ORM (Mapeamento Objeto Relacional), é uma técnica para aproximar o paradigma de desenvolvimento de aplicações orientadas a objeto ao paradigma do banco relacional.
-- O Hibernate é uma ferramenta de consulta e persistência objeto/relacional de alta performance.
-- Na versão 3.x o Hibernate implementa a especificação JPA através do conceito de anotações, o que facilita ainda mais o mapeamento objeto-relacional, que pode agora ser feito diretamente na classe.
+## 🖥️Tecnologias Utilizadas
 
-## 1.3 Spring DataJPA
-- O Spring Data JPA, é a maior parte da família Spring Data, facilita a implementação de repositórios baseados em JPA.
-- Este módulo lida com suporte aprimorado para camadas de acesso a dado baseadas em JPA.
-- Facilita a criação de aplicativos baseados em Spring que usam tecnologias de acesso a dados
+- Kotlin
+- Spring Boot
+- Gradle
+- H2 Database (banco de dados em memória)
+- Flyway  (controle de versão do banco de dados)
+- Swagger
 
-## 1.4 Conhecendo o domínio da Aplicação.
-### API para sistema de Avaliação de Créditos
-Uma empresa de emprestimo precisa criar um sistema de análise de solicitação de crédito. Sua tarefa será criar uma API REST SPRING BOOTE KOTLIN para a empresa aos seus clientes as seguintes funcionalidades.
+## 🛠️Funcionalidades
 
-### Customer
+A API fornece as seguintes funcionalidades:
 
-<style>
-.v {
-    writing-mode: vertical-lr;
-    text-align: center;
-}
-</style>
+##### Cliente (Customer)
 
-| Customer | | id | <div class="v">firstName</div> | <div class="v">lastName</div> | <div class="v">cpf</div> | <div class="v">income</div> | <div class="v">email</div> | <div class="v">password</div> | <div class="v">zipcode</div> | <div class="v">street</div> |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Cadastrar | req | | x | x | x | x | x | x | x | x |
-| | res | | | | | | | | | |
-| Editar | req | x | x | x | | x | | | x | x |
-| | res | | | | x | x | x | | x | x |
-| Visualizar | req | x | | | | | | | | |
-| | res | | x | x | x | x | x | | x | x |
-| Deletar | req | x | | | | | | | | |
-| | res | | | | | | | | | | 
+- Cadastrar
+- Editar cadastro
+- Visualizar perfil
+- Deletar cadastro
 
-### Solicitação de Empréstimo (Credit)
+##### Solicitação de Empréstimo (Credit)
+✅ Desafio 1: o máximo de parcelas permitido será 48
 
-| Credito 	|  	| <div class="v">creditCode (PK)</div> 	| <div class="v">creditValue</div> 	| <div class="v">dayFirstOfInstallment</div> 	| <div class="v">numberOfInstallments</div> 	| <div class="v">customerId(FK)<br/>customer.id</div> 	| <div class="v">customer.email</div> 	| <div class="v">customer.income</div> 	| <div class="v">status</div> 	|
-|:---:	|:---:	|:---:	|:---:	|:---:	|:---:	|:---:	|---	|---	|---	|
-| Cadastrar 	| req 	|  	| x 	| x 	| x 	| x 	|  	|  	|  	|
-|  	| res 	|  	|  	|  	|  	|  	|  	|  	|  	|
-| ListAll* 	| req 	|  	|  	|  	|  	| x 	|  	|  	|  	|
-|  	| res 	| x 	| x 	|  	| x 	|  	|  	|  	|  	|
-| Visualizar** 	| req 	| x 	|  	|  	|  	| x 	|  	|  	|  	|
-|  	| res 	|  	| x 	| x 	| x 	| x 	| x 	| x 	| x 	|
+✅ Desafio 2 : data da primeira parcela deverá ser no máximo 3 meses após o dia atual
 
-ListAll* = Listar todos as solicitações de emprestimo
-Visualizar** = Visualizr um 
+- Cadastrar
 
-### Desafio
-Implemente as regras de negócio a seguir para a solicitação de emprestimo:
-- o máximo de parcelas permitido deverá ser  no máximo 3 meses após o dia atual
-- data da primeira parcela deverá ser no máximo 3 meses apos o dia atual
+- Listar todas as solicitações de empréstimo de um cliente
 
-## 1.5 Iniciando o Projeto no Spring Initialzr 
-### 1.5.1 Link
-https://start.spring.io
-
-### 1.5.2 Project
-#### Project
-- [x] Graddle - Groovy
+- Visualizar um empréstimo
 
 
-#### Language
-- [x] Kotlin
 
-#### Spring Boot
-- [x] 3.0.4
-- [ ] Groovy
+## 🚀Executando o projeto
 
-#### Project Metada
-- Group: br.com.ruben
-- Artifact: credit-application-system
-- Name: credit-application-system
-- Description: Client Application System with Spring Boot and Kotlin
-- Package name: br.com.ruben.credit-application-system
-- Packaging: Jar
-- Java: 17
+1. Certifique-se de ter o Kotlin e o Gradle instalados na sua máquina.
+2. Clone este repositório.
+3. Navegue até o diretório raiz do projeto.
+4. Execute o comando `gradle bootRun` para iniciar a aplicação.
 
-#### Dependecies
-- Spring WEB : vai permitir criar uma API Rest
-- Validation : Validações de Campo de Entrada
-- Spring Data JPA : Persistir dados em SQL com JAPA Persistence API
-- Flyway Migration : "Git de banco de dados"
-- H2 Database: Banco de Dados em memória
+Para facilitar o desenvolvimento e interagir com o projeto, recomendo o uso de uma IDE, como o IntelliJ IDEA ou o Eclipse. Abra o projeto na sua IDE preferida para ter acesso a recursos avançados de depuração e execução simplificada.
 
-## 1.6 Importando o Projeto parao o IntelliJ
+Você pode acessar o banco de dados ou testar testar os endpoints da API utilizando o Postman ou o Swagger:
+
+- Para acessar o banco de dados basta acessar a URL http://localhost:8080/h2-console digitando o usuário e a senha, ambas definidas como admin
+- Para acessar a documentação e testar a API de forma interativa, execute o projeto e acesse a URL http://localhost:8080/swagger-ui/index.html
+- Alternativamente, você pode utilizar o Postman para enviar requisições HTTP aos endpoints da API.
+
+## 🧪Testes
+
+Foram implementados testes unitários e de integração para as classes construídas. Execute o comando `gradle test` para rodar os testes.
+
+## Banco de Dados
+
+O projeto utiliza o banco de dados H2 para armazenar os dados. As migrações do banco de dados são gerenciadas pelo Flyway.
 
