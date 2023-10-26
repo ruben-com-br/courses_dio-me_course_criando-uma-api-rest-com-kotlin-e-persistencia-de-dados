@@ -112,3 +112,42 @@ https://start.spring.io
 
 ## 1.6 Importando o Projeto parao o IntelliJ
 
+## 1.7 Criando o repósitorio do projeot e "first commit"
+
+```shell
+git init
+....
+```
+
+# 2. Criando as classes da Camada de de Persitência (Model)
+# 2.1 Criando classes de Modelo
+```shell
+git checkout -b "01/classes_camada_de_persitencia"
+```
+
+Criado eos arquivos
+```shell
+entity.
+   Address.kt
+   CreditCode.kt
+   Customer.kt
+
+enumeration.
+   Status.kt
+```
+
+## 2.2 Arquivo de Configuração "application.yml"
+
+````
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+````
+
+## 2.3 Anotando as Classes de Modelo com as Anotações JPA (jakarta.persistence)
+
