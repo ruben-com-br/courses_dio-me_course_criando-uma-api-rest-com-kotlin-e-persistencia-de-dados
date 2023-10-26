@@ -1,3 +1,4 @@
+![certificado](https://github.com/rubengyn/courses_dio-me_course_criando-uma-api-rest-com-kotlin-e-persistencia-de-dados/assets/17937736/a373d9e7-c98f-4ac4-96cd-62f3cbd26070)
 <h1 align="center">Api Rest com Kotlin e Persistencia de Dados - DIO</h1>
 <h4 align="center">Sistema de Analise de Solicitação de Crédito</h4>
 <p align="center">
